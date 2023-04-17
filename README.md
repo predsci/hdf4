@@ -103,6 +103,8 @@ Third Party Software Requirements
 
   * ZLIB 1.1.4(libz.a) or later. 
 
+  * XDR/TIRPC/RPM. For 32-bit systems, XDR is built from source if not available on the system.  For Ubuntu >22.04 based systems, as well as Red Hat >7, you may need to add `-ltirpc` when linking your codes to hdf4.
+
 
 System Requirements
 -------------------
