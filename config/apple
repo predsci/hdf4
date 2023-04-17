@@ -4,7 +4,7 @@
 # after configure starts and defines, among other things, flags for
 # the various compilation modes.
 
-# Choosing and Fortran Compilers
+# Choosing C and Fortran Compilers
 # --------------------------------------
 #
 # The user should be able to specify the compiler by setting the CC
@@ -22,8 +22,8 @@
 
 # The default compiler is `clang'.
 if test "X-$CC" = "X-"; then
-    CC=clang
-    CC_BASENAME=clang
+  CC=clang
+  CC_BASENAME=clang
 fi
 
 # Figure out GNU C compiler flags
@@ -35,14 +35,12 @@ fi
 # Figure out Clang C compiler flags
 . $srcdir/config/clang-flags
 
-# Use gfortran as the default F77 compiler.
+# Use default Fortran compiler according to what C compiler is used.
 if test "X-$F77" = "X-"; then
   F77=gfortran
   F77_BASENAME=gfortran
 fi
 
-# Figure out GNU FC compiler flags
-. $srcdir/config/gnu-fflags
 
 # compiler version strings
 
@@ -134,3 +132,15 @@ if test X != "X$fc_version"; then
     # Get the compiler version numbers
     fc_vers_major=`echo $fc_version | cut -f1 -d.`
 fi
+
+# Figure out GNU FC compiler flags
+. $srcdir/config/gnu-fflags
+
+# Overriding Configure Tests
+# --------------------------
+#
+# Values for overriding configuration tests when cross compiling.
+
+# Set this to `yes' or `no' depending on whether the target is big
+# endian or little endian.
+#ac_cv_c_bigendian=${ac_cv_c_bigendian='yes'}
